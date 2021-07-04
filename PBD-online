@@ -48,7 +48,7 @@ function transferData(){
 
 //transfer data ke fail google sheet tempat kumpul data
   var ss = SpreadsheetApp.openByUrl(
-    'https://docs.google.com/spreadsheets/d/1Ao_IpECk6Ukr4nzDf9gE1A8XkE7x0n_pHfEDrXFRIWI/edit?usp=sharing');//LINK DATA
+    'MASUKKAN LINK FILE GOOGLE SHEET DATA ANDA DISINI');  //LINK DATA
   var sData   = ss.getSheetByName("DATA");                //DATA
   var len     = sData.getLastRow();                       //KIRA BILANGAN DATA DALAM DATABASE
   var senarai=sData.getRange('B2:B'+ len).getValues();    //SENARAI NAMA
