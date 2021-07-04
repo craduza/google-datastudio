@@ -1,0 +1,64 @@
+function transferData(){
+//masuk data dlm array
+  var ss      = SpreadsheetApp.getActiveSpreadsheet();
+  var sPBD    = ss.getSheetByName("LAPORAN MURID"); //PBD MURID
+  var nama    =sPBD.getRange('D2').getValue();//SELECTED MURID
+  var values = [[ //masukkn semua subjek PBD dalam array
+  //BM
+  sPBD.getRange('C12').getValue(),//TP
+  sPBD.getRange('D12').getValue(),//KETERANGAN
+  sPBD.getRange('D13').getValue(),//KOMEN
+  //BI
+  sPBD.getRange('C14').getValue(),//TP
+  sPBD.getRange('D14').getValue(),//KETERANGAN
+  sPBD.getRange('D15').getValue(),//KOMEN
+  //MT
+  sPBD.getRange('C16').getValue(),//TP
+  sPBD.getRange('D16').getValue(),//KETERANGAN
+  sPBD.getRange('D17').getValue(),//KOMEN
+  //SN
+  sPBD.getRange('C18').getValue(),//TP
+  sPBD.getRange('D18').getValue(),//KETERANGAN
+  sPBD.getRange('D19').getValue(),//KOMEN
+  //PAI
+  sPBD.getRange('C20').getValue(),//TP
+  sPBD.getRange('D20').getValue(),//KETERANGAN
+  sPBD.getRange('D21').getValue(),//KOMEN
+  //PSV
+  sPBD.getRange('C22').getValue(),//TP
+  sPBD.getRange('D22').getValue(),//KETERANGAN
+  sPBD.getRange('D23').getValue(),//KOMEN
+  //MZ
+  sPBD.getRange('C24').getValue(),//TP
+  sPBD.getRange('D24').getValue(),//KETERANGAN
+  sPBD.getRange('D25').getValue(),//KOMEN
+  //PJK
+  sPBD.getRange('C26').getValue(),//TP
+  sPBD.getRange('D26').getValue(),//KETERANGAN
+  sPBD.getRange('D27').getValue(),//KOMEN
+  //MORAL
+  sPBD.getRange('C28').getValue(),//TP
+  sPBD.getRange('D28').getValue(),//KETERANGAN
+  sPBD.getRange('D29').getValue(),//KOMEN
+  //ARAB
+  sPBD.getRange('C30').getValue(),//TP
+  sPBD.getRange('D30').getValue(),//KETERANGAN
+  sPBD.getRange('D31').getValue()//KOMEN
+  ]];
+
+//transfer data ke fail google sheet tempat kumpul data
+  var ss = SpreadsheetApp.openByUrl(
+    'https://docs.google.com/spreadsheets/d/1Ao_IpECk6Ukr4nzDf9gE1A8XkE7x0n_pHfEDrXFRIWI/edit?usp=sharing');//LINK DATA
+  var sData   = ss.getSheetByName("DATA");                //DATA
+  var len     = sData.getLastRow();                       //KIRA BILANGAN DATA DALAM DATABASE
+  var senarai=sData.getRange('B2:B'+ len).getValues();    //SENARAI NAMA
+
+  for(var i=0; i<len; i=i+1){
+    if(senarai[i]==nama){
+      //Logger.log('found ' + selPeserta + ' at ' + i);
+      i=i+2;
+      sData.getRange(i,8,1,30).setValues(values);         //masukkn data dalam row, mula dari column ke-8
+      i=len;
+    }
+  }
+}
